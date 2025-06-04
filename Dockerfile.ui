@@ -1,0 +1,32 @@
+# Start with an official Python runtime as a parent image
+FROM python:3.11-slim
+
+# Set environment variables for Python
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the requirements file into the container
+COPY requirements.txt .
+
+# Install Python dependencies
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
+# Copy the Streamlit application code and any necessary assets
+# (like the ui_app.py and potentially the docs/ folder if needed for default content)
+COPY ui_app.py .
+# If ui_app.py needs access to the docs/ folder for some reason (e.g. default examples)
+# COPY docs/ ./docs/
+# If ui_app.py creates TEMP_UPLOAD_DIR, it will be created inside the container at /app/temp_ui_uploads
+
+# Expose the port Streamlit runs on (default 8501, but App Runner often prefers 8080)
+# We will tell Streamlit to run on 8080.
+EXPOSE 8080
+
+# Define the command to run the Streamlit application
+# Use 0.0.0.0 to make it accessible from outside the container on all interfaces
+# Tell Streamlit to use port 8080 to match what App Runner expects by default
+CMD ["streamlit", "run", "ui_app.py", "--server.port", "8080", "--server.address", "0.0.0.0"]
