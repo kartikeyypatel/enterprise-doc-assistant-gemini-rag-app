@@ -1,0 +1,39 @@
+# Python virtual environment
+.venv/
+venv/
+env/
+
+# Python bytecode and cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE and editor specific files
+.idea/
+.vscode/
+*.swp
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Git files
+.git/
+.gitignore
+
+# Environment file (should be passed at runtime, not baked into the image)
+.env
+
+# Local databases (if any were created outside build context)
+db_chroma_gemini/
+db_chroma_gemini_api/
+# Note: We don't need to ignore PINECONE_PERSIST_DIRECTORY as Pinecone is cloud-based
+
+# Docker specific files (if any)
+Dockerfile
+docker-compose.yml
+
+# Test files or large datasets not needed in the final image
+# (unless you intend to run tests inside the container during build)
+tests/

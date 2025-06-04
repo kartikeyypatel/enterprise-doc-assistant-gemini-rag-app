@@ -1,0 +1,60 @@
+# Environment variables (contains secrets!)
+.env
+
+# Python virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python bytecode and cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE and editor specific files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Local databases (if any were created and not needed in repo)
+db_chroma_gemini/
+db_chroma_gemini_api/
+
+# Weights & Biases local files
+wandb/
+
+# Temporary upload folder (if created by ui_app.py)
+temp_uploads/
+
+# Docker specific (sometimes build artifacts, though usually covered by .dockerignore for build context)
+# Add any other local docker files you don't want to commit
+
+# Logs
+*.log
+logs/
+
+# Large data files or sensitive documents in docs/
+# If you want to commit *some* sample documents but not others,
+# you can list specific large/sensitive files here like:
+# docs/large_sensitive_document.pdf
+# Or, if you want to ignore all PDFs in docs but commit other file types:
+# docs/*.pdf
+# For now, let's assume you might commit a few small sample PDFs in docs/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
